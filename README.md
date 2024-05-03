@@ -31,9 +31,9 @@ Work in progress...
 
 ### Todo
 
-- [ ] deploy (vercel)
+- [x] deploy (vercel)
 - [ ] Scaffold basic ui with mock data
-- [ ] Tidy up build process
+- [x] Tidy up build process
 - [ ] Set up a database (vercel postgres)
 - [ ] Attach database to UI
 - [ ] Add authentication (w/ clerk)
