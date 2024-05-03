@@ -1,3 +1,4 @@
+import { AppLayout } from '@shared/layouts/app.layout';
 import { GalleryInterface } from '../interfaces/gallery.interface';
 
 const imageUrls = [
@@ -18,5 +19,9 @@ const mockData = imageUrls.map((imageUrl, index) => {
 });
 
 export function GalleryContainer() {
-  return <GalleryInterface images={mockData} />;
+  return (
+    <AppLayout>
+      <GalleryInterface images={mockData} />
+    </AppLayout>
+  );
 }
