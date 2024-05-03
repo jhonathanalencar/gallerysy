@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Noto_Sans } from 'next/font/google';
 
-import '../assets/styles/globals.css';
+import { RootInfrastructure } from '@shared/infrastructure/root.infrastructure';
 
 const noto_sans = Noto_Sans({
   subsets: ['latin'],
@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={`${noto_sans.className} h-full antialiased`}>
-        {children}
+        <RootInfrastructure>{children}</RootInfrastructure>
       </body>
     </html>
   );
