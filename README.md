@@ -32,7 +32,7 @@ Work in progress...
 ### Todo
 
 - [x] deploy (vercel)
-- [ ] Scaffold basic ui with mock data
+- [x] Scaffold basic ui with mock data
 - [x] Tidy up build process
 - [ ] Set up a database (vercel postgres)
 - [ ] Attach database to UI
