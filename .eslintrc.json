@@ -17,6 +17,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "ignorePatterns": ["*.js"],
   "extends": [
     "next",
     "next/core-web-vitals",
@@ -25,9 +26,17 @@
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["@typescript-eslint", "react", "prettier"],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "jest-dom",
+    "testing-library",
+    "prettier"
+  ],
   "rules": {
     "react/react-in-jsx-scope": "off"
   }
