@@ -1,3 +1,5 @@
+import { getBase64 } from '@shared/helpers/get-base-64';
+
 import { AppLayout } from '@shared/layouts/app.layout';
 import { GalleryInterface } from '../interfaces/gallery.interface';
 
@@ -15,13 +17,32 @@ const mockData = imageUrls.map((imageUrl, index) => {
   return {
     id: String(index + 1),
     imageUrl,
+    blurredDataUrl: '',
   };
 });
 
-export function GalleryContainer() {
+type Photo = {
+  id: string;
+  imageUrl: string;
+  blurredDataUrl: string;
+};
+
+async function addBlurredDataUrls(images: Photo[]): Promise<Photo[]> {
+  const base64Promises = images.map((image) => getBase64(image.imageUrl));
+  const base64Results = await Promise.all(base64Promises);
+  const photosWithBlur: Photo[] = images.map((photo, i) => {
+    photo.blurredDataUrl = base64Results[i] ?? '';
+    return photo;
+  });
+  return photosWithBlur;
+}
+
+export async function GalleryContainer() {
+  const data = await addBlurredDataUrls(mockData);
+
   return (
     <AppLayout>
-      <GalleryInterface images={mockData} />
+      <GalleryInterface images={data} />
     </AppLayout>
   );
 }

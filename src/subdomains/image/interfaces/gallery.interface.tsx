@@ -4,13 +4,14 @@ interface GalleryInterfaceProps {
   images: {
     id: string;
     imageUrl: string;
+    blurredDataUrl: string;
   }[];
 }
 
 export function GalleryInterface({ images }: GalleryInterfaceProps) {
   return (
     <section className="mx-auto min-h-full max-w-7xl p-4">
-      <div className="grid-cols-gallery grid gap-4">
+      <div className="grid grid-cols-gallery gap-4">
         {images.map((image) => {
           return (
             <div
@@ -20,10 +21,15 @@ export function GalleryInterface({ images }: GalleryInterfaceProps) {
               <Image
                 src={image.imageUrl}
                 alt="something"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                placeholder="blur"
+                blurDataURL={image.blurredDataUrl}
+                sizes="(max-width: 640px) 100vw,
+                  (max-width: 1280px) 50vw,
+                  (max-width: 1536px) 33vw,
+                  25vw"
                 fill
                 priority
-                className="h-full w-full object-contain"
+                className="h-full w-full object-contain group-hover:brightness-110"
               />
               <div className="absolute inset-0 flex w-full translate-y-full items-end truncate bg-gradient-to-t from-black/75 to-transparent pl-2 transition-transform group-hover:translate-y-0">
                 <span className="font-medium text-white">
