@@ -21,7 +21,8 @@
       "@/*": ["./src/*"],
       "@assets/*": ["./src/assets/*"],
       "@shared/*": ["./src/shared/*"],
-      "@subdomains/*": ["./src/subdomains/*"]
+      "@subdomains/*": ["./src/subdomains/*"],
+      "@externals/*": ["./src/externals/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

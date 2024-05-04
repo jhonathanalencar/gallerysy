@@ -1,11 +1,9 @@
 import Image from 'next/image';
 
+import type { TPhoto } from '@shared/types/image.type';
+
 interface GalleryInterfaceProps {
-  images: {
-    id: string;
-    imageUrl: string;
-    blurredDataUrl: string;
-  }[];
+  images: TPhoto[];
 }
 
 export function GalleryInterface({ images }: GalleryInterfaceProps) {
@@ -15,7 +13,7 @@ export function GalleryInterface({ images }: GalleryInterfaceProps) {
         {images.map((image) => {
           return (
             <div
-              key={image.id}
+              key={image.imageId}
               className="group relative aspect-video w-full overflow-hidden rounded bg-zinc-800 shadow-md "
             >
               <Image
@@ -32,9 +30,7 @@ export function GalleryInterface({ images }: GalleryInterfaceProps) {
                 className="h-full w-full object-contain group-hover:brightness-110"
               />
               <div className="absolute inset-0 flex w-full translate-y-full items-end truncate bg-gradient-to-t from-black/75 to-transparent pl-2 transition-transform group-hover:translate-y-0">
-                <span className="font-medium text-white">
-                  image-{image.id}.png
-                </span>
+                <span className="font-medium text-white">{image.name}</span>
               </div>
             </div>
           );
