@@ -1,3 +1,4 @@
+import '@externals/storage/env-config';
 import { drizzle } from 'drizzle-orm/vercel-postgres';
 import { sql } from '@vercel/postgres';
 
