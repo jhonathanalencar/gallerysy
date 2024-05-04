@@ -8,6 +8,8 @@ import {
   varchar,
 } from 'drizzle-orm/pg-core';
 
+import { env } from '@shared/helpers/env';
+
 export const createTable = pgTableCreator((name) => `gallerysy_${name}`);
 
 export const user = createTable(
@@ -16,11 +18,7 @@ export const user = createTable(
     userId: serial('user_id').primaryKey().notNull(),
     name: varchar('name', { length: 255 }).notNull(),
     email: text('email').notNull().unique(),
-    imageUrl: text('image_url')
-      .notNull()
-      .default(
-        'https://gist.github.com/assets/87830705/e0950f6f-1bbe-4ef0-b8a0-4655dffe3e06'
-      ),
+    imageUrl: text('image_url').notNull().default(env.USER_AVATAR_URL),
     createdAt: timestamp('created_at').notNull().defaultNow(),
   },
   (table) => ({
