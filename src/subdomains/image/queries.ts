@@ -1,3 +1,5 @@
+'server-only';
+
 import { db } from '@externals/storage/connection.storage';
 
 export async function getImages() {
