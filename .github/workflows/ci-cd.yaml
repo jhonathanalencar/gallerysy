@@ -3,6 +3,8 @@ name: CI/CD
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+  USER_AVATAR_URL: ${{ secrets.USER_AVATAR_URL }}
 
 on:
   push:
