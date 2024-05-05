@@ -1,4 +1,3 @@
-import '@externals/storage/env-config';
 import type { Config } from 'drizzle-kit';
 
 import { env } from '@shared/helpers/env';
