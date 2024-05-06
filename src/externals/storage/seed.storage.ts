@@ -5,8 +5,9 @@ import { image, user } from './schema.storage';
 
 const users = [
   {
-    name: 'Alice Liz',
-    email: 'alice-liz@email.com',
+    userId: 'f988c031-df2c-4a0f-911b-9f0e96d4118a',
+    name: 'Alice Ann',
+    email: 'alice-ann@email.com',
     createdAt: new Date('2024-01-09T22:00:00.545Z'),
   },
 ];
@@ -75,7 +76,7 @@ async function main() {
   await db.delete(image);
   await db.delete(user);
 
-  const insertedUserIds: { insertedId: number }[] = await db
+  const insertedUserIds: { insertedId: string }[] = await db
     .insert(user)
     .values(users)
     .returning({ insertedId: user.userId });

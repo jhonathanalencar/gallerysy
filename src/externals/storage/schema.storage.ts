@@ -8,19 +8,17 @@ import {
   varchar,
 } from 'drizzle-orm/pg-core';
 
+import { DEFAULT_USER_PROFILE_URL } from '@shared/constants/user.constant';
+
 export const createTable = pgTableCreator((name) => `gallerysy_${name}`);
 
 export const user = createTable(
   'user',
   {
-    userId: serial('user_id').primaryKey().notNull(),
+    userId: text('user_id').primaryKey().notNull(),
     name: varchar('name', { length: 255 }).notNull(),
     email: text('email').notNull().unique(),
-    imageUrl: text('image_url')
-      .notNull()
-      .default(
-        'https://gist.github.com/assets/87830705/e0950f6f-1bbe-4ef0-b8a0-4655dffe3e06'
-      ),
+    imageUrl: text('image_url').notNull().default(DEFAULT_USER_PROFILE_URL),
     createdAt: timestamp('created_at').notNull().defaultNow(),
   },
   (table) => ({
@@ -36,7 +34,11 @@ export const image = createTable(
     name: varchar('name', { length: 255 }).notNull(),
     imageUrl: text('image_url').notNull(),
     createdAt: timestamp('created_at').notNull().defaultNow(),
-    userId: text('user_id').notNull(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => user.userId, {
+        onDelete: 'cascade',
+      }),
   },
   (table) => ({
     imageNameIndex: index('image_name_idx').on(table.name),
