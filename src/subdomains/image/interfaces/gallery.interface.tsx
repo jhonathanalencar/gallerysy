@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 
 import type { TPhoto } from '@shared/types/image.type';
 
@@ -9,6 +10,15 @@ interface GalleryInterfaceProps {
 export function GalleryInterface({ images }: GalleryInterfaceProps) {
   return (
     <section className="mx-auto min-h-full max-w-7xl p-4">
+      <div>
+        <SignedOut>
+          <SignInButton />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      </div>
+
       <div className="grid grid-cols-gallery gap-4">
         {images.map((image) => {
           return (

@@ -17,6 +17,7 @@
     "db:seed": "tsx --env-file=.env ./src/externals/storage/seed.storage.ts"
   },
   "dependencies": {
+    "@clerk/nextjs": "^5.0.6",
     "@plaiceholder/next": "^3.0.0",
     "@vercel/postgres": "^0.8.0",
     "drizzle-orm": "^0.30.10",

@@ -1,3 +1,5 @@
+import { ClerkProvider } from '@clerk/nextjs';
+
 import '@assets/styles/globals.css';
 
 interface RootInfrastructureProps {
@@ -5,5 +7,5 @@ interface RootInfrastructureProps {
 }
 
 export function RootInfrastructure({ children }: RootInfrastructureProps) {
-  return <>{children}</>;
+  return <ClerkProvider>{children}</ClerkProvider>;
 }
