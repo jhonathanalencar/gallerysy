@@ -1,9 +1,9 @@
 import { getBase64 } from '@shared/helpers/get-base-64';
 import type { TImage, TPhoto } from '@shared/types/image.type';
+import { getImages } from '../queries';
 
 import { AppLayout } from '@shared/layouts/app.layout';
 import { GalleryInterface } from '../interfaces/gallery.interface';
-import { getImages } from '../queries';
 
 async function addBlurredDataUrls(images: TImage[]): Promise<TPhoto[]> {
   const base64Promises = images.map((image) => getBase64(image.imageUrl));

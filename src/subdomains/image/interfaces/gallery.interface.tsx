@@ -1,5 +1,11 @@
 import Image from 'next/image';
-import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import {
+  ClerkLoading,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs';
 
 import type { TPhoto } from '@shared/types/image.type';
 
@@ -11,8 +17,9 @@ export function GalleryInterface({ images }: GalleryInterfaceProps) {
   return (
     <section className="mx-auto min-h-full max-w-7xl p-4">
       <div>
+        <ClerkLoading>Loading...</ClerkLoading>
         <SignedOut>
-          <SignInButton />
+          <SignInButton>Sing in</SignInButton>
         </SignedOut>
         <SignedIn>
           <UserButton />

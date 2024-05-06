@@ -73,7 +73,6 @@ const conn = new VercelPool({
 const db = drizzle(conn);
 
 async function main() {
-  await db.delete(image);
   await db.delete(user);
 
   const insertedUserIds: { insertedId: string }[] = await db
