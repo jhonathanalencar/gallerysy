@@ -36,7 +36,7 @@ Work in progress...
 - [x] Tidy up build process
 - [x] Set up a database (vercel postgres)
 - [x] Attach database to UI
-- [ ] Add authentication (w/ clerk)
+- [x] Add authentication (w/ clerk)
 - [ ] Add image upload
 - [ ] "taint" (server-only)
 - [x] Use Next/Image component
