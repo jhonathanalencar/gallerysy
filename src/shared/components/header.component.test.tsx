@@ -2,10 +2,7 @@ import { render, screen, within } from '@testing-library/react';
 
 import { Header } from './header.component';
 
-const mockVerifySession = jest.fn();
-jest.mock('../libs/dal.lib', () => ({
-  verifySession: () => mockVerifySession(),
-}));
+const mockUseAuth = jest.fn();
 
 jest.mock('@clerk/nextjs', () => ({
   ClerkLoading: jest.fn(({ children }) => <div>{children}</div>),
@@ -16,18 +13,18 @@ jest.mock('@clerk/nextjs', () => ({
       <button aria-label="Open user button">user</button>
     </div>
   )),
+  useAuth: () => mockUseAuth(),
 }));
 
 describe('<Header>', () => {
   describe('Render', () => {
     beforeEach(() => {
-      mockVerifySession.mockClear();
+      mockUseAuth.mockClear();
     });
 
     it('should render a header element with a logo link', () => {
-      mockVerifySession.mockImplementation(() => ({
-        isAuthenticated: false,
-        userId: null,
+      mockUseAuth.mockImplementation(() => ({
+        isSignedIn: false,
       }));
 
       render(<Header />);
@@ -43,9 +40,8 @@ describe('<Header>', () => {
     });
 
     it('should render a sign-in button when user is not authenticated', () => {
-      mockVerifySession.mockImplementation(() => ({
-        isAuthenticated: false,
-        userId: null,
+      mockUseAuth.mockImplementation(() => ({
+        isSignedIn: false,
       }));
 
       render(<Header />);
@@ -58,9 +54,8 @@ describe('<Header>', () => {
     });
 
     it('should render a user button and a nav element with dashboard link if the user is authenticated', () => {
-      mockVerifySession.mockImplementation(() => ({
-        isAuthenticated: true,
-        userId: 'fake_user_id',
+      mockUseAuth.mockImplementation(() => ({
+        isSignedIn: true,
       }));
 
       render(<Header />);
@@ -77,13 +72,12 @@ describe('<Header>', () => {
       expect(nav).toBeInTheDocument();
       expect(dashboardLink).toBeInTheDocument();
       expect(dashboardLink).toHaveAttribute('href', '/dashboard');
-      expect(mockVerifySession).toHaveBeenCalledTimes(1);
+      expect(mockUseAuth).toHaveBeenCalledTimes(1);
     });
 
     it('should render a placeholder div', () => {
-      mockVerifySession.mockImplementation(() => ({
-        isAuthenticated: false,
-        userId: null,
+      mockUseAuth.mockImplementation(() => ({
+        isSignedIn: false,
       }));
 
       render(<Header />);
