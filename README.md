@@ -40,7 +40,7 @@ Work in progress...
 - [ ] Add image upload
 - [x] "taint" (server-only)
 - [x] Use Next/Image component
-- [ ] Error management (w/ Sentry)
+- [x] Error management (w/ Sentry)
 - [ ] Routing/image page (parallel route)
 - [ ] ShadUI (toasts)
 - [ ] Update upload button to be less cringe
