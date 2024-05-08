@@ -11,8 +11,14 @@ export function GalleryInterface({ images }: GalleryInterfaceProps) {
     <section aria-label="Gallery" className="mx-auto min-h-full max-w-7xl p-4">
       <div className="grid grid-cols-gallery gap-4">
         {images.length > 0 ? (
-          images.map((image) => {
-            return <Photo key={image.imageId} image={image} />;
+          images.map((image, index) => {
+            return (
+              <Photo
+                key={image.imageId}
+                image={image}
+                priority={index < 9 ? true : false}
+              />
+            );
           })
         ) : (
           <div className="flex justify-center">

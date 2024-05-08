@@ -11,9 +11,12 @@ import {
 import { LayoutDashboardIcon, LogInIcon } from 'lucide-react';
 
 import { Skeleton } from './skeleton.component';
+import { UploadButton } from '../libs/uploadthing.lib';
+import { useRouter } from 'next/navigation';
 
 export function Header() {
   const { isSignedIn: isAuthenticated } = useAuth();
+  const router = useRouter();
 
   return (
     <>
@@ -26,6 +29,19 @@ export function Header() {
           >
             Gallerysy
           </Link>
+          <UploadButton
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => {
+              // Do something with the response
+              console.log('Files: ', res);
+              console.log('Upload Completed');
+              router.refresh();
+            }}
+            onUploadError={(error: Error) => {
+              // Do something with the error.
+              console.error(`ERROR! ${error.message}`);
+            }}
+          />
 
           <div className="flex">
             <ClerkLoading>
@@ -74,7 +90,7 @@ export function Header() {
                     aria-label="Sign in"
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-800 transition-colors hover:bg-zinc-700"
                   >
-                    <LogInIcon className="h-6 w-6 text-zinc-100" />
+                    <LogInIcon className="h-6 w-6 text-orange-400" />
                   </button>
                 </SignInButton>
               )}

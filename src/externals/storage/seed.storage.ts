@@ -14,49 +14,42 @@ const users = [
 
 const images = [
   {
-    imageId: 1,
     name: 'raijuu-nara-violet-evergarden.jpg',
     imageUrl:
       'https://utfs.io/f/a970fe10-a621-47dc-ab8e-4db136adbd7b-uoz8dv.jpg',
     createdAt: new Date('2024-05-04T22:00:00.545Z'),
   },
   {
-    imageId: 2,
     name: 'shakugan-no-shana.jpg',
     imageUrl:
       'https://utfs.io/f/6065bed9-0305-45f8-8cea-b0670202385f-g4e7r2.jpg',
     createdAt: new Date('2024-03-14T22:00:00.545Z'),
   },
   {
-    imageId: 3,
     name: 'black-rock-shooter.jpg',
     imageUrl:
       'https://utfs.io/f/7765ad48-fbc7-4ab3-8842-bdc0c95091a8-5qhxq.jpg',
     createdAt: new Date('2024-05-01T22:00:00.545Z'),
   },
   {
-    imageId: 4,
     name: 'kirishima-touka.jpg',
     imageUrl:
       'https://utfs.io/f/28770ec6-8c9e-48e1-8781-6acac167516a-7hutyu.jpg',
     createdAt: new Date('2024-02-11T22:00:00.545Z'),
   },
   {
-    imageId: 5,
     name: 'Kimetsu-no-Yaiba-Zenitsu-Agatsuma-katana-yellow.jpg',
     imageUrl:
       'https://utfs.io/f/89309483-bef5-4477-a154-92defe792604-8l2nhm.jpg',
     createdAt: new Date('2024-02-25T22:00:00.545Z'),
   },
   {
-    imageId: 6,
     name: 'anime-girl-with-kitsune-mask.png',
     imageUrl:
       'https://utfs.io/f/87c155ec-1680-49f7-8354-5647f97065d4-22soft.png',
     createdAt: new Date('2024-03-05T22:00:00.545Z'),
   },
   {
-    imageId: 7,
     name: 'tomori-nao-charlotte.png',
     imageUrl:
       'https://utfs.io/f/93a65de5-3636-4c5f-bbf4-fb902e67334c-5oc4oy.png',
