@@ -20,6 +20,7 @@
     "@clerk/nextjs": "^5.0.6",
     "@clerk/themes": "^2.1.2",
     "@plaiceholder/next": "^3.0.0",
+    "@sentry/nextjs": "^7.114.0",
     "@vercel/postgres": "^0.8.0",
     "drizzle-orm": "^0.30.10",
     "lucide-react": "^0.378.0",
