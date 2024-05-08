@@ -29,8 +29,10 @@ export function GalleryInterface({ images }: GalleryInterfaceProps) {
                 priority
                 className="h-full w-full object-contain group-hover:brightness-110"
               />
-              <div className="absolute inset-0 flex w-full translate-y-full items-end truncate bg-gradient-to-t from-black/75 to-transparent pl-2 transition-transform group-hover:translate-y-0">
-                <span className="font-medium text-white">{image.name}</span>
+              <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/75  to-transparent opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="block truncate pb-1 pl-2 font-medium text-zinc-100">
+                  {image.name}
+                </span>
               </div>
             </div>
           );
