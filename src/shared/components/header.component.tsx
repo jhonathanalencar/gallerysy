@@ -1,18 +1,19 @@
+'use client';
+
 import Link from 'next/link';
 import {
   ClerkLoaded,
   ClerkLoading,
   SignInButton,
   UserButton,
+  useAuth,
 } from '@clerk/nextjs';
 import { LayoutDashboardIcon, LogInIcon } from 'lucide-react';
-
-import { verifySession } from '../libs/dal.lib';
 
 import { Skeleton } from './skeleton.component';
 
 export function Header() {
-  const { isAuthenticated } = verifySession();
+  const { isSignedIn: isAuthenticated } = useAuth();
 
   return (
     <>

@@ -12,7 +12,7 @@ export function Photo({ image, ...rest }: PhotoProps) {
       <Image
         src={image.imageUrl}
         alt={image.name}
-        placeholder="blur"
+        placeholder={image.blurredDataUrl ? 'blur' : 'empty'}
         blurDataURL={image.blurredDataUrl}
         sizes="(max-width: 640px) 100vw,
                   (max-width: 1280px) 50vw,
