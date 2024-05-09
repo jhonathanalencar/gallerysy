@@ -1,4 +1,5 @@
 import {
+  boolean,
   index,
   pgTableCreator,
   serial,
@@ -19,6 +20,7 @@ export const user = createTable(
     name: varchar('name', { length: 255 }).notNull(),
     email: text('email').notNull().unique(),
     imageUrl: text('image_url').notNull().default(DEFAULT_USER_PROFILE_URL),
+    canUpload: boolean('can_upload').default(false),
     createdAt: timestamp('created_at').notNull().defaultNow(),
   },
   (table) => ({

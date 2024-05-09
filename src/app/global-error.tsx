@@ -15,8 +15,8 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className="h-full">
+      <body className="h-full antialiased">
         <div className="flex min-h-full flex-col bg-zinc-900 text-zinc-100">
           <main className="flex-1">
             <section className="mx-auto min-h-full max-w-7xl p-4">

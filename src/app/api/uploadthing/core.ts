@@ -11,7 +11,13 @@ export const ourFileRouter = {
   imageUploader: f({ image: { maxFileSize: '4MB', maxFileCount: 10 } })
     .middleware(async ({ files }) => {
       const session = auth();
-      if (!session.userId) throw new UploadThingError('Unauthorized');
+      if (!session.userId) throw new UploadThingError('Unauthenticated');
+
+      const user = await db.query.user.findFirst({
+        where: (model, { eq }) => eq(model.userId, session.userId),
+      });
+      if (!user) throw new UploadThingError('Unauthorized');
+      if (!user.canUpload) throw new UploadThingError('Unauthorized');
 
       const fileNames = files.map((file) => file.name);
       const foundImages = await db.query.image.findMany({
@@ -39,7 +45,7 @@ export const ourFileRouter = {
   })
     .middleware(async () => {
       const session = auth();
-      if (!session.userId) throw new UploadThingError('Unauthorized');
+      if (!session.userId) throw new UploadThingError('Unauthenticated');
 
       return { userId: session.userId };
     })
