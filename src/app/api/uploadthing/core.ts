@@ -3,40 +3,49 @@ import { createUploadthing, type FileRouter } from 'uploadthing/next';
 import { UploadThingError } from 'uploadthing/server';
 
 import { db } from '@externals/storage/connection.storage';
-import { image } from '@externals/storage/schema.storage';
+import { image as imageSchema } from '@externals/storage/schema.storage';
 
 const f = createUploadthing();
 
-// FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
-  // Define as many FileRoutes as you like, each with a unique routeSlug
-  imageUploader: f({ image: { maxFileSize: '4MB' } })
-    // Set permissions and file types for this FileRoute
-    .middleware(async () => {
-      // This code runs on your server before upload
+  imageUploader: f({ image: { maxFileSize: '4MB', maxFileCount: 10 } })
+    .middleware(async ({ files }) => {
       const session = auth();
-
-      // If you throw, the user will not be able to upload
       if (!session.userId) throw new UploadThingError('Unauthorized');
 
-      // Whatever is returned here is accessible in onUploadComplete as `metadata`
+      const fileNames = files.map((file) => file.name);
+      const foundImages = await db.query.image.findMany({
+        where: (model, { inArray }) => inArray(model.name, fileNames),
+      });
+      if (foundImages.length > 0) {
+        throw new UploadThingError('Duplicate file name');
+      }
+
       return { userId: session.userId };
     })
     .onUploadComplete(async ({ metadata, file }) => {
-      // This code RUNS ON YOUR SERVER after upload
-      console.log('Upload complete for userId:', metadata.userId);
-
-      console.log('file url', file.url);
-      console.log(file.name);
-      await db.insert(image).values([
+      await db.insert(imageSchema).values([
         {
           imageUrl: file.url,
           name: file.name,
           userId: metadata.userId,
         },
       ]);
+      return { uploadedBy: metadata.userId };
+    }),
+  mediaPost: f({
+    image: { maxFileSize: '2MB', maxFileCount: 4 },
+    video: { maxFileSize: '256MB', maxFileCount: 1 },
+  })
+    .middleware(async () => {
+      const session = auth();
+      if (!session.userId) throw new UploadThingError('Unauthorized');
 
-      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
+      return { userId: session.userId };
+    })
+    .onUploadComplete(async ({ metadata, file }) => {
+      console.log('Upload complete for userId:', metadata.userId);
+      console.log('file url', file.url);
       return { uploadedBy: metadata.userId };
     }),
 } satisfies FileRouter;

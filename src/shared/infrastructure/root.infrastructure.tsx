@@ -5,6 +5,8 @@ import { extractRouterConfig } from 'uploadthing/server';
 
 import { ourFileRouter } from '@/app/api/uploadthing/core';
 
+import { Toaster } from '../components/ui/sonner';
+
 import '@assets/styles/globals.css';
 
 interface RootInfrastructureProps {
@@ -19,6 +21,7 @@ export function RootInfrastructure({ children }: RootInfrastructureProps) {
       }}
     >
       <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+      <Toaster />
       {children}
     </ClerkProvider>
   );

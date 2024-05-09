@@ -11,12 +11,10 @@ import {
 import { LayoutDashboardIcon, LogInIcon } from 'lucide-react';
 
 import { Skeleton } from './skeleton.component';
-import { UploadButton } from '../libs/uploadthing.lib';
-import { useRouter } from 'next/navigation';
+import { UploadButton } from './upload-button.component';
 
 export function Header() {
   const { isSignedIn: isAuthenticated } = useAuth();
-  const router = useRouter();
 
   return (
     <>
@@ -29,19 +27,6 @@ export function Header() {
           >
             Gallerysy
           </Link>
-          <UploadButton
-            endpoint="imageUploader"
-            onClientUploadComplete={(res) => {
-              // Do something with the response
-              console.log('Files: ', res);
-              console.log('Upload Completed');
-              router.refresh();
-            }}
-            onUploadError={(error: Error) => {
-              // Do something with the error.
-              console.error(`ERROR! ${error.message}`);
-            }}
-          />
 
           <div className="flex">
             <ClerkLoading>
@@ -57,6 +42,7 @@ export function Header() {
             <ClerkLoaded>
               {isAuthenticated ? (
                 <div className="flex items-center gap-4">
+                  <UploadButton />
                   <nav>
                     <ul>
                       <li>
