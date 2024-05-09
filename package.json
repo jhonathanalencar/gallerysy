@@ -36,7 +36,7 @@
     "server-only": "^0.0.1",
     "sharp": "^0.33.3",
     "sonner": "^1.4.41",
-    "svix": "^1.23.0",
+    "svix": "^1.24.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^6.10.3",
