@@ -19,7 +19,6 @@ export function Photo({ image, ...rest }: PhotoProps) {
                   (max-width: 1536px) 33vw,
                   25vw"
         fill
-        priority={image.imageId <= 9 ? true : false}
         className="h-full w-full object-contain group-hover:brightness-110"
         {...rest}
       />

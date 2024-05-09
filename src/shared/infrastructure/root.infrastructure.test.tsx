@@ -6,6 +6,18 @@ jest.mock('@clerk/nextjs', () => ({
   ...jest.requireActual('@clerk/nextjs'),
   ClerkProvider: jest.fn(({ children }) => <>{children}</>),
 }));
+jest.mock('@uploadthing/react/next-ssr-plugin', () => ({
+  NextSSRPlugin: jest.fn(),
+}));
+jest.mock('uploadthing/server', () => ({
+  extractRouterConfig: jest.fn(),
+}));
+jest.mock('../../app/api/uploadthing/core', () => ({
+  ourFileRouter: jest.fn(),
+}));
+jest.mock('../components/ui/sonner', () => ({
+  Toaster: jest.fn(),
+}));
 
 describe('<RootInfrastructure>', () => {
   describe('Render', () => {

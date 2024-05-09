@@ -37,13 +37,13 @@ Work in progress...
 - [x] Set up a database (vercel postgres)
 - [x] Attach database to UI
 - [x] Add authentication (w/ clerk)
-- [ ] Add image upload
+- [x] Add image upload
 - [x] "taint" (server-only)
 - [x] Use Next/Image component
 - [x] Error management (w/ Sentry)
 - [ ] Routing/image page (parallel route)
-- [ ] ShadUI (toasts)
-- [ ] Update upload button to be less cringe
+- [x] ShadUI (toasts)
+- [x] Update upload button to be less cringe
 - [ ] Analytics (posthog)
 - [ ] Delete button (w/ Server Actions)
 - [ ] Rate limiting (upstash)
