@@ -2,8 +2,15 @@ import { render, screen, within } from '@testing-library/react';
 
 import { Header } from './header.component';
 
-const mockUseAuth = jest.fn();
+jest.mock('./upload-button.component', () => ({
+  UploadButton: jest.fn(() => (
+    <label>
+      <input type="file" /> Choose Files(s)
+    </label>
+  )),
+}));
 
+const mockUseAuth = jest.fn();
 jest.mock('@clerk/nextjs', () => ({
   ClerkLoading: jest.fn(({ children }) => <div>{children}</div>),
   ClerkLoaded: jest.fn(({ children }) => <div>{children}</div>),
