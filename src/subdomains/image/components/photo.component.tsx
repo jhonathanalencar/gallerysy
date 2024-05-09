@@ -1,4 +1,5 @@
 import Image, { type ImageProps } from 'next/image';
+import Link from 'next/link';
 
 import type { TPhoto } from '@shared/types/image.type';
 
@@ -8,7 +9,10 @@ interface PhotoProps extends Omit<ImageProps, 'src' | 'alt'> {
 
 export function Photo({ image, ...rest }: PhotoProps) {
   return (
-    <div className="group relative aspect-video w-full overflow-hidden rounded bg-zinc-800 shadow-md">
+    <Link
+      href={`/img/${image.imageId}`}
+      className="group relative aspect-video w-full cursor-zoom-in overflow-hidden rounded bg-zinc-800 shadow-md"
+    >
       <Image
         src={image.imageUrl}
         alt={image.name}
@@ -27,6 +31,6 @@ export function Photo({ image, ...rest }: PhotoProps) {
           {image.name}
         </span>
       </div>
-    </div>
+    </Link>
   );
 }

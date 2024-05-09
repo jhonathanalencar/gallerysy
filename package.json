@@ -20,6 +20,7 @@
     "@clerk/nextjs": "^5.0.6",
     "@clerk/themes": "^2.1.2",
     "@plaiceholder/next": "^3.0.0",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@sentry/nextjs": "^7.114.0",
     "@uploadthing/react": "^6.5.3",
     "@vercel/postgres": "^0.8.0",

@@ -19,13 +19,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en" className="dark h-full">
       <body className={`${noto_sans.className} h-full antialiased`}>
-        <RootInfrastructure>{children}</RootInfrastructure>
+        <RootInfrastructure>
+          {children}
+          {modal}
+        </RootInfrastructure>
       </body>
     </html>
   );
