@@ -17,12 +17,12 @@ export const getImages = cache(async () => {
   return images;
 });
 
-export const getImage = cache(async (imageId: number, userId: string) => {
+export const getImage = cache(async (imageId: number) => {
   const session = auth();
   if (!session.userId) throw new Error('Unauthenticated');
   const imagesData = await db.query.image.findFirst({
     where: (model, { eq, and }) =>
-      and(eq(model.imageId, imageId), eq(model.userId, userId)),
+      and(eq(model.imageId, imageId), eq(model.userId, session.userId)),
   });
   if (!imagesData) throw new Error('Image not found');
   const [image] = await addBlurredDataUrls([imagesData]);
