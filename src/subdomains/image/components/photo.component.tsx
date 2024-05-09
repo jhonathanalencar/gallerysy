@@ -11,7 +11,7 @@ export function Photo({ image, ...rest }: PhotoProps) {
   return (
     <Link
       href={`/img/${image.imageId}`}
-      className="group relative aspect-video w-full overflow-hidden rounded bg-zinc-800 shadow-md"
+      className="group relative aspect-video w-full cursor-zoom-in overflow-hidden rounded bg-zinc-800 shadow-md"
     >
       <Image
         src={image.imageUrl}
