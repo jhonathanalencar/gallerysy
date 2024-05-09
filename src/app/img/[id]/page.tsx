@@ -1,9 +1,11 @@
-interface ImgPageProps {
+import { imageRoutes } from '@subdomains/image/routes';
+
+interface PicturePageProps {
   params: {
     id: string;
   };
 }
 
-export default function ImgPage({ params }: ImgPageProps) {
-  return <h1>Img Page 2 {params.id}</h1>;
+export default function PicturePage({ params }: PicturePageProps) {
+  return <imageRoutes.PICTURE imageId={params.id} />;
 }

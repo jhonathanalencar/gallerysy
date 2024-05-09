@@ -12,3 +12,12 @@ export const getImages = cache(async () => {
   const images = await addBlurredDataUrls(imagesData);
   return images;
 });
+
+export const getImage = cache(async (imageId: number) => {
+  const imagesData = await db.query.image.findFirst({
+    where: (model, { eq }) => eq(model.imageId, imageId),
+  });
+  if (!imagesData) throw new Error('Image not found');
+  const [image] = await addBlurredDataUrls([imagesData]);
+  return image;
+});
