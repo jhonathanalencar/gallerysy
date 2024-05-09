@@ -4,10 +4,11 @@ import { auth } from '@clerk/nextjs/server';
 
 import { db } from '@externals/storage/connection.storage';
 import { addBlurredDataUrls } from '@shared/helpers/add-blurred-data-urls';
+import { UnauthenticatedError } from '@shared/errors/unauthenticated.error';
 
 export const getImages = cache(async () => {
   const session = auth();
-  if (!session.userId) throw new Error('Unauthenticated');
+  if (!session.userId) throw new UnauthenticatedError();
   const imagesData = await db.query.image.findMany({
     where: (model, { eq }) => eq(model.userId, session.userId),
     orderBy: (model, { desc }) => desc(model.imageId),

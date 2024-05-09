@@ -25,7 +25,7 @@ export default function Error({
             An error has occurred
           </p>
           <h1 className="mt-4 text-center text-3xl font-bold tracking-tight text-zinc-100 md:text-4xl">
-            {error.message || 'Something went wrong'}
+            Something went wrong
           </h1>
           <p className="mt-6 text-center text-base text-zinc-400">
             Please try again later or contact support if the problem persists.
