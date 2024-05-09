@@ -8,7 +8,7 @@ export function UploadButton() {
 
   return (
     <UtUploadButton
-      className="ut-button:bg-primary ut-button:text-background ut-allowed-content:text-foreground ut-button:ring-primary ut-uploading:text-background ut-button:ut-uploading:bg-secondary ut-button:font-bold ut-button:ring-offset-zinc-950 hover:ut-button:brightness-110 ut-button:ut-uploading:cursor-not-allowed"
+      className="ut-button:bg-primary ut-button:font-bold ut-button:text-background ut-button:ring-primary ut-button:ring-offset-zinc-950 hover:ut-button:brightness-110 ut-allowed-content:text-foreground ut-uploading:text-background ut-button:ut-uploading:cursor-not-allowed ut-button:ut-uploading:bg-secondary"
       endpoint="imageUploader"
       onClientUploadComplete={() => {
         toast.success('Upload Completed', {
