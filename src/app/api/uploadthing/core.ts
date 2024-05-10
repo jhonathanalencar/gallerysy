@@ -4,6 +4,7 @@ import { UploadThingError } from 'uploadthing/server';
 
 import { db } from '@externals/storage/connection.storage';
 import { image as imageSchema } from '@externals/storage/schema.storage';
+import { ratelimit } from '@externals/rate-limit';
 
 const f = createUploadthing();
 
@@ -18,6 +19,9 @@ export const ourFileRouter = {
       });
       if (!user) throw new UploadThingError('Unauthorized');
       if (!user.canUpload) throw new UploadThingError('Unauthorized');
+
+      const { success } = await ratelimit.limit(user.userId);
+      if (!success) throw new UploadThingError('Rate limit exceeded');
 
       const fileNames = files.map((file) => file.name);
       const foundImages = await db.query.image.findMany({
