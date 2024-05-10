@@ -21,7 +21,7 @@ export function RootInfrastructure({ children }: RootInfrastructureProps) {
       }}
     >
       <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-      <Toaster />
+      <Toaster position="top-right" />
       {children}
     </ClerkProvider>
   );

@@ -43,7 +43,6 @@ export function UploadButton() {
     {
       onUploadBegin() {
         toast.loading('Uploading...', {
-          position: 'top-right',
           id: 'upload-started',
           style: {
             backgroundColor: 'hsl(20 14.3% 4.1%)',
@@ -56,7 +55,6 @@ export function UploadButton() {
         console.error(`ERROR! ${error.message}`);
         toast.dismiss('upload-started');
         toast.error(error.message || 'Failed to upload file', {
-          position: 'top-right',
           style: {
             backgroundColor: 'hsl(20 14.3% 4.1%)',
             color: 'hsl(20.5 90.2% 48.2%)',
@@ -75,7 +73,6 @@ export function UploadButton() {
         );
         toast.dismiss('upload-started');
         toast.success('Upload Completed', {
-          position: 'top-right',
           style: {
             backgroundColor: 'hsl(20 14.3% 4.1%)',
             color: 'hsl(20.5 90.2% 48.2%)',
@@ -91,7 +88,7 @@ export function UploadButton() {
     <div>
       <label
         htmlFor="upload"
-        className="flex cursor-pointer items-center gap-2 rounded bg-black/40 px-4 py-2 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-zinc-900 hover:bg-black/60 has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-black/40"
+        className="flex cursor-pointer items-center gap-2 rounded bg-black/40 px-4 py-2 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-zinc-900 hover:bg-black/60 has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-black/40 has-[:disabled]:opacity-70"
       >
         <UploadIcon className="h-5 w-5 text-orange-400" />
         <span>Upload</span>
