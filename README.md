@@ -46,7 +46,7 @@ Work in progress...
 - [x] Update upload button to be less cringe
 - [ ] Analytics (posthog)
 - [x] Delete button (w/ Server Actions)
-- [ ] Rate limiting (upstash)
+- [x] Rate limiting (upstash)
 - [ ] Fix the page layout for images of different resolutions
 - [ ] Selecting images on the gallery page (state management)
 - [ ] Infinite scroll
