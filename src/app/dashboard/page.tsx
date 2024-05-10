@@ -1,3 +1,5 @@
+import { dashboardRoutes } from '@subdomains/dashboard/routes';
+
 export default function DashboardPage() {
-  return <h1>Mikasa</h1>;
+  return <dashboardRoutes.DASHBOARD />;
 }
