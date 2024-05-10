@@ -47,7 +47,7 @@ export function DashboardInterface({ images }: DashboardInterfaceProps) {
   return (
     <section className="mx-auto min-h-full max-w-7xl p-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-2xl font-bold">Files</h3>
+        <h3 className="text-2xl font-bold">Files ({images.length})</h3>
         <div className="flex flex-col items-center gap-3 sm:flex-row">
           {selectedImageIds.length > 0 ? (
             <form

@@ -23,6 +23,9 @@ jest.mock('next/image', () =>
     <img src={src} alt={alt} />
   ))
 );
+jest.mock('../../actions', () => ({
+  getImagesAction: jest.fn(() => mockImages),
+}));
 const mockGalleryInterface = jest.mocked(
   <GalleryInterface images={mockImages} />
 );
