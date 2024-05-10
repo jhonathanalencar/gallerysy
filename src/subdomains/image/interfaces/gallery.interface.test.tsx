@@ -4,11 +4,15 @@ import type { TPhoto } from '@shared/types/image.type';
 
 import { GalleryInterface } from './gallery.interface';
 
-jest.mock('../components/photo.component', () => ({
-  Photo: jest.fn(({ image }) => {
+jest.mock('next/image', () =>
+  jest.fn(({ src, alt }) => (
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={image.imageUrl} alt={image.name} />;
-  }),
+    <img src={src} alt={alt} />
+  ))
+);
+
+jest.mock('../actions', () => ({
+  getImagesAction: jest.fn(() => mockImages),
 }));
 
 const mockImages: TPhoto[] = [

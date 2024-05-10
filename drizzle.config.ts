@@ -5,9 +5,9 @@ import { env } from '@shared/helpers/env';
 export default {
   schema: './src/externals/storage/schema.storage.ts',
   out: './drizzle',
-  driver: 'pg',
+  dialect: 'postgresql',
   dbCredentials: {
-    connectionString: env.POSTGRES_URL,
+    url: env.POSTGRES_URL,
   },
   tablesFilter: ['gallerysy_*'],
   verbose: true,

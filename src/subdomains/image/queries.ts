@@ -6,13 +6,15 @@ import { db } from '@externals/storage/connection.storage';
 import { addBlurredDataUrls } from '@shared/helpers/add-blurred-data-urls';
 import { UnauthenticatedError } from '@shared/errors/unauthenticated.error';
 
-export const getImages = cache(async () => {
+export const getImages = cache(async (page: number = 1, limit: number = 15) => {
   const session = auth();
   if (!session.userId) throw new UnauthenticatedError();
+  const offset = (page - 1) * limit;
   const imagesData = await db.query.image.findMany({
     where: (model, { eq }) => eq(model.userId, session.userId),
     orderBy: (model, { desc }) => desc(model.imageId),
-    limit: 12,
+    limit,
+    offset,
   });
   const images = await addBlurredDataUrls(imagesData);
   return images;

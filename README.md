@@ -47,9 +47,9 @@ Work in progress...
 - [ ] Analytics (posthog)
 - [x] Delete button (w/ Server Actions)
 - [x] Rate limiting (upstash)
-- [ ] Fix the page layout for images of different resolutions
-- [ ] Selecting images on the gallery page (state management)
-- [ ] Infinite scroll
+- [x] Fix the page layout for images of different resolutions
+- [x] Selecting images on the gallery page (state management)
+- [x] Infinite scroll
 - [ ] Folders/albums
 
 ## Built With
