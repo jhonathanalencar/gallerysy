@@ -45,7 +45,7 @@ Work in progress...
 - [x] ShadUI (toasts)
 - [x] Update upload button to be less cringe
 - [ ] Analytics (posthog)
-- [ ] Delete button (w/ Server Actions)
+- [x] Delete button (w/ Server Actions)
 - [ ] Rate limiting (upstash)
 - [ ] Fix the page layout for images of different resolutions
 - [ ] Selecting images on the gallery page (state management)
