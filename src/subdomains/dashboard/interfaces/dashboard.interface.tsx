@@ -1,5 +1,6 @@
 'use client';
 
+import { UploadButton } from '@shared/components/upload-button.component';
 import { Checkbox } from '@shared/components/ui/checkbox';
 import {
   Table,
@@ -20,7 +21,10 @@ interface DashboardInterfaceProps {
 export function DashboardInterface({ images }: DashboardInterfaceProps) {
   return (
     <section className="mx-auto min-h-full max-w-7xl p-4">
-      <h3 className="text-2xl font-bold">Files</h3>
+      <div className="flex items-center justify-between">
+        <h3 className="text-2xl font-bold">Files</h3>
+        <UploadButton />
+      </div>
       <div className="overflow-x-auto">
         <Table className="mt-3 min-w-[48rem] border">
           <TableCaption>A list of files that have been uploaded.</TableCaption>

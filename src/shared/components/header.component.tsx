@@ -11,7 +11,6 @@ import {
 import { LayoutDashboardIcon, LogInIcon } from 'lucide-react';
 
 import { Skeleton } from './skeleton.component';
-import { UploadButton } from './upload-button.component';
 
 export function Header() {
   const { isSignedIn: isAuthenticated } = useAuth();
@@ -42,7 +41,6 @@ export function Header() {
             <ClerkLoaded>
               {isAuthenticated ? (
                 <div className="flex items-center gap-4">
-                  <UploadButton />
                   <nav>
                     <ul>
                       <li>
