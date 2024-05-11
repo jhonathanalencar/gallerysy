@@ -25,9 +25,11 @@
 
 ## Project
 
-An application for upload images.
+<p align="center">
+  <img src=".github/cover.png" width="100%">
+</p>
 
-Work in progress...
+An application for upload images.
 
 ### Todo
 
