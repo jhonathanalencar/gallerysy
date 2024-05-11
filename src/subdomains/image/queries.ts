@@ -31,3 +31,8 @@ export const getImage = cache(async (imageId: number) => {
   const [image] = await addBlurredDataUrls([imagesData]);
   return image;
 });
+
+export const getAllImages = cache(async () => {
+  const images = await db.query.image.findMany();
+  return images;
+});

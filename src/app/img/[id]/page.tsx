@@ -2,12 +2,19 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { imageRoutes } from '@subdomains/image/routes';
-import { getImage } from '@subdomains/image/queries';
+import { getAllImages, getImage } from '@subdomains/image/queries';
 
 interface PicturePageProps {
   params: {
     id: string;
   };
+}
+
+export async function generateStaticParams() {
+  const images = await getAllImages();
+  return images.map((image) => ({
+    id: String(image.imageId),
+  }));
 }
 
 export async function generateMetadata({
