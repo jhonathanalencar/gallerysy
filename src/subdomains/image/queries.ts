@@ -27,7 +27,7 @@ export const getImage = cache(async (imageId: number) => {
     where: (model, { eq, and }) =>
       and(eq(model.imageId, imageId), eq(model.userId, session.userId)),
   });
-  if (!imagesData) throw new Error('Image not found');
+  if (!imagesData) return;
   const [image] = await addBlurredDataUrls([imagesData]);
   return image;
 });
