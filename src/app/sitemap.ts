@@ -1,5 +1,6 @@
-import { getAllImages } from '@/subdomains/image/queries';
 import type { MetadataRoute } from 'next';
+
+import { getAllImages } from '@subdomains/image/queries';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const images = await getAllImages();

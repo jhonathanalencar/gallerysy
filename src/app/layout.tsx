@@ -9,12 +9,22 @@ const noto_sans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
   title: {
     template: 'Gallerysy | %s',
     default: 'Gallerysy',
   },
   description:
     'Gallerysy is an image gallery for upload, store and manage your favorite images.',
+  openGraph: {
+    title: 'Gallerysy',
+    description:
+      'An image gallery for upload, store and manage your favorite images.',
+    type: 'website',
+    locale: 'en_US',
+    url: process.env.NEXT_PUBLIC_BASE_URL,
+    siteName: 'Gallerysy',
+  },
   twitter: {
     card: 'summary_large_image',
   },
