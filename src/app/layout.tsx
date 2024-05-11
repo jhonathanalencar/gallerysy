@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   },
   description:
     'Gallerysy is an image gallery for upload, store and manage your favorite images.',
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 export default function RootLayout({
