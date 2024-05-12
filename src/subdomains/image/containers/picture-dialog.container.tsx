@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation';
+
 import { getImage } from '../queries';
 
 import { PictureDialogInterface } from '../interfaces/picture-dialog.interface';
@@ -13,6 +15,8 @@ export async function PictureDialogContainer({
   if (Number.isNaN(imageIdAsNumber)) throw new Error('Invalid photo id');
 
   const image = await getImage(imageIdAsNumber);
+
+  if (!image) notFound();
 
   return <PictureDialogInterface image={image} />;
 }
