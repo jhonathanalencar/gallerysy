@@ -1,14 +1,15 @@
-import { getImages } from '@subdomains/image/queries';
+import { Suspense } from 'react';
 
 import { AppLayout } from '@shared/layouts/app.layout';
-import { DashboardInterface } from '../interfaces/dashboard.interface';
+import { DashboardContainerLoader } from './dashboard-loader.container';
+import { DashboardContainerSkeleton } from './dashboard-skeleton.container';
 
-export async function DashboardContainer() {
-  const images = await getImages();
-
+export function DashboardContainer() {
   return (
     <AppLayout>
-      <DashboardInterface images={images} />
+      <Suspense fallback={<DashboardContainerSkeleton />}>
+        <DashboardContainerLoader />
+      </Suspense>
     </AppLayout>
   );
 }
