@@ -1,14 +1,14 @@
-import { getImages } from '../../queries';
+import { getImages } from '@subdomains/image/queries';
 import { CustomError } from '@shared/errors/custom-error.error';
 
-import { GalleryInterface } from '../../interfaces/gallery.interface';
+import { DashboardInterface } from '../interfaces/dashboard.interface';
 import { ErrorMessage } from '@shared/components/error-message.component';
 
-export async function GalleryContainerLoader() {
+export async function DashboardContainerLoader() {
   try {
     const images = await getImages();
 
-    return <GalleryInterface images={images} />;
+    return <DashboardInterface images={images} />;
   } catch (error) {
     if (error instanceof CustomError) {
       return <ErrorMessage>{error.message}</ErrorMessage>;

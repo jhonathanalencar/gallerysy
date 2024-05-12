@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 
 import { imageRoutes } from '@subdomains/image/routes';
 import { getAllImages, getImage } from '@subdomains/image/queries';
@@ -22,7 +21,12 @@ export async function generateMetadata({
 }: PicturePageProps): Promise<Metadata> {
   const imageIdAsNumber = parseInt(id);
   const image = await getImage(imageIdAsNumber);
-  if (!image) return notFound();
+  if (!image) {
+    return {
+      title: 'Page Not Found',
+    };
+  }
+
   return {
     title: image.name,
     description: `Picture of ${image.name}`,
