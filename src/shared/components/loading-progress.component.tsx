@@ -15,7 +15,7 @@ export function LoadingProgress() {
   }, []);
 
   return (
-    <div className="flex min-h-full flex-col">
+    <div className="fixed inset-0 flex min-h-full flex-col ">
       <main className="flex h-full flex-1 items-center justify-center">
         <svg
           width="80"

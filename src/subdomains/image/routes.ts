@@ -1,5 +1,5 @@
 import { GalleryContainer } from './containers/gallery/gallery.container';
-import { PictureDialogContainer } from './containers/picture-dialog.container';
+import { PictureDialogContainer } from './containers/picture-dialog/picture-dialog.container';
 import { PictureContainer } from './containers/picture/picture.container';
 
 export const imageRoutes = {
