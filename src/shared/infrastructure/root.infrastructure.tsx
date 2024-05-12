@@ -8,6 +8,7 @@ import { ourFileRouter } from '@/app/api/uploadthing/core';
 import { Toaster } from '../components/ui/sonner';
 
 import '@assets/styles/globals.css';
+import '@assets/styles/nprogress.css';
 
 interface RootInfrastructureProps {
   children: React.ReactNode;
